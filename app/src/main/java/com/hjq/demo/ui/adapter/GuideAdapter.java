@@ -10,18 +10,18 @@ import com.hjq.demo.R;
 import com.hjq.demo.app.AppAdapter;
 
 /**
- *    author : Android 轮子哥
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2020/08/28
- *    desc   : 引导页适配器
+ * author : Android 轮子哥
+ * github : https://github.com/getActivity/AndroidProject
+ * time   : 2020/08/28
+ * desc   : 引导页适配器
  */
 public final class GuideAdapter extends AppAdapter<Integer> {
 
     public GuideAdapter(Context context) {
         super(context);
-        addItem(R.drawable.guide_1_bg);
-        addItem(R.drawable.guide_2_bg);
-        addItem(R.drawable.guide_3_bg);
+        addItem(R.mipmap.launcher_ic);
+        addItem(R.mipmap.launcher_ic);
+        addItem(R.mipmap.launcher_ic);
     }
 
     @NonNull

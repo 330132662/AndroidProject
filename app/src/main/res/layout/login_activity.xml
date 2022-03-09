@@ -27,7 +27,7 @@
         android:layout_width="@dimen/dp_120"
         android:layout_height="@dimen/dp_120"
         android:layout_marginVertical="@dimen/dp_10"
-        app:srcCompat="@drawable/logo_big_ic" />
+        app:srcCompat="@mipmap/launcher_ic" />
 
     <LinearLayout
         android:id="@+id/ll_login_body"
