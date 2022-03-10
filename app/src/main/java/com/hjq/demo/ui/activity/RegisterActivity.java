@@ -16,16 +16,9 @@ import com.hjq.demo.R;
 import com.hjq.demo.aop.Log;
 import com.hjq.demo.aop.SingleClick;
 import com.hjq.demo.app.AppActivity;
-import com.hjq.demo.http.api.GetCodeApi;
-import com.hjq.demo.http.api.RegisterApi;
-import com.hjq.demo.http.model.HttpData;
 import com.hjq.demo.manager.InputTextManager;
-import com.hjq.http.EasyHttp;
-import com.hjq.http.listener.HttpCallback;
 import com.hjq.widget.view.CountdownView;
 import com.hjq.widget.view.SubmitButton;
-
-import okhttp3.Call;
 
 /**
  *    author : Android 轮子哥
@@ -123,23 +116,7 @@ public final class RegisterActivity extends AppActivity
             }
 
             // 获取验证码
-            EasyHttp.post(this)
-                    .api(new GetCodeApi()
-                            .setPhone(mPhoneView.getText().toString()))
-                    .request(new HttpCallback<HttpData<Void>>(this) {
 
-                        @Override
-                        public void onSucceed(HttpData<Void> data) {
-                            toast(R.string.common_code_send_hint);
-                            mCountdownView.start();
-                        }
-
-                        @Override
-                        public void onFail(Exception e) {
-                            super.onFail(e);
-                            mCountdownView.start();
-                        }
-                    });
         } else if (view == mCommitView) {
             if (mPhoneView.getText().toString().length() != 11) {
                 mPhoneView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.shake_anim));
@@ -181,42 +158,7 @@ public final class RegisterActivity extends AppActivity
             }
 
             // 提交注册
-            EasyHttp.post(this)
-                    .api(new RegisterApi()
-                            .setPhone(mPhoneView.getText().toString())
-                            .setCode(mCodeView.getText().toString())
-                            .setPassword(mFirstPassword.getText().toString()))
-                    .request(new HttpCallback<HttpData<RegisterApi.Bean>>(this) {
 
-                        @Override
-                        public void onStart(Call call) {
-                            mCommitView.showProgress();
-                        }
-
-                        @Override
-                        public void onEnd(Call call) {}
-
-                        @Override
-                        public void onSucceed(HttpData<RegisterApi.Bean> data) {
-                            postDelayed(() -> {
-                                mCommitView.showSucceed();
-                                postDelayed(() -> {
-                                    setResult(RESULT_OK, new Intent()
-                                            .putExtra(INTENT_KEY_PHONE, mPhoneView.getText().toString())
-                                            .putExtra(INTENT_KEY_PASSWORD, mFirstPassword.getText().toString()));
-                                    finish();
-                                }, 1000);
-                            }, 1000);
-                        }
-
-                        @Override
-                        public void onFail(Exception e) {
-                            super.onFail(e);
-                            postDelayed(() -> {
-                                mCommitView.showError(3000);
-                            }, 1000);
-                        }
-                    });
         }
     }
 

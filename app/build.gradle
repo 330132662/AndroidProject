@@ -1,6 +1,6 @@
-apply plugin : 'com.android.application'
-apply plugin : 'android-aspectjx'
-apply from : '../common.gradle'
+apply plugin: 'com.android.application'
+apply plugin: 'android-aspectjx'
+apply from: '../common.gradle'
 
 // Android 代码规范文档：https://github.com/getActivity/AndroidCodeStandard
 android {
@@ -57,7 +57,7 @@ android {
             signingConfig signingConfigs.config
             // 添加清单占位符
             addManifestPlaceholders([
-                    'app_name'    :    '安卓技术中台 Debug 版'
+                    'app_name': '安卓技术中台 Debug 版'
             ])
             // 调试模式下只保留一种架构的 so 库，提升打包速度
             ndk {
@@ -70,7 +70,7 @@ android {
             applicationIdSuffix ''
             // 添加清单占位符
             addManifestPlaceholders([
-                    'app_name'    :    '安卓技术中台 Preview 版'
+                    'app_name': '安卓技术中台 Preview 版'
             ])
         }
 
@@ -88,7 +88,7 @@ android {
             signingConfig signingConfigs.config
             // 添加清单占位符
             addManifestPlaceholders([
-                    'app_name'    :    '@string/app_name'
+                    'app_name': '@string/app_name'
             ])
             // 仅保留两种架构的 so 库，根据 Bugly 统计得出
             ndk {
@@ -148,7 +148,7 @@ dependencies {
     implementation 'com.github.getActivity:ToastUtils:9.5'
 
     // 网络请求框架：https://github.com/getActivity/EasyHttp
-    implementation 'com.github.getActivity:EasyHttp:10.2'
+//    implementation 'com.github.getActivity:EasyHttp:10.2'
     // OkHttp 框架：https://github.com/square/okhttp
     // noinspection GradleDependency
     implementation 'com.squareup.okhttp3:okhttp:3.12.13'
@@ -199,7 +199,8 @@ dependencies {
     // 内存泄漏监测框架：https://github.com/square/leakcanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
     previewImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
-
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     // 多语种：https://github.com/getActivity/MultiLanguages
     // 悬浮窗：https://github.com/getActivity/XToast
     // 日志输出：https://github.com/getActivity/Logcat

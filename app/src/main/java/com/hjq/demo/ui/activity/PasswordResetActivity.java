@@ -15,12 +15,8 @@ import com.hjq.demo.R;
 import com.hjq.demo.aop.Log;
 import com.hjq.demo.aop.SingleClick;
 import com.hjq.demo.app.AppActivity;
-import com.hjq.demo.http.api.PasswordApi;
-import com.hjq.demo.http.model.HttpData;
 import com.hjq.demo.manager.InputTextManager;
 import com.hjq.demo.ui.dialog.TipsDialog;
-import com.hjq.http.EasyHttp;
-import com.hjq.http.listener.HttpCallback;
 
 /**
  *    author : Android 轮子哥
@@ -108,23 +104,7 @@ public final class PasswordResetActivity extends AppActivity
             }
 
             // 重置密码
-            EasyHttp.post(this)
-                    .api(new PasswordApi()
-                            .setPhone(mPhoneNumber)
-                            .setCode(mVerifyCode)
-                            .setPassword(mFirstPassword.getText().toString()))
-                    .request(new HttpCallback<HttpData<Void>>(this) {
 
-                        @Override
-                        public void onSucceed(HttpData<Void> data) {
-                            new TipsDialog.Builder(getActivity())
-                                    .setIcon(TipsDialog.ICON_FINISH)
-                                    .setMessage(R.string.password_reset_success)
-                                    .setDuration(2000)
-                                    .addOnDismissListener(dialog -> finish())
-                                    .show();
-                        }
-                    });
         }
     }
 

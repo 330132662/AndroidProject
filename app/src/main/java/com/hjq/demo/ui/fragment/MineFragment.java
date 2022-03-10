@@ -16,7 +16,6 @@ import com.hjq.demo.ui.activity.GuideActivity;
 import com.hjq.demo.ui.activity.HomeActivity;
 import com.hjq.demo.ui.activity.ImagePreviewActivity;
 import com.hjq.demo.ui.activity.ImageSelectActivity;
-import com.hjq.demo.ui.activity.LoginActivity;
 import com.hjq.demo.ui.activity.PasswordForgetActivity;
 import com.hjq.demo.ui.activity.PasswordResetActivity;
 import com.hjq.demo.ui.activity.PersonalDataActivity;
@@ -34,10 +33,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *    author : Android 轮子哥
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2018/10/18
- *    desc   : 我的 Fragment
+ * author : Android 轮子哥
+ * github : https://github.com/getActivity/AndroidProject
+ * time   : 2018/10/18
+ * desc   : 我的 Fragment
  */
 public final class MineFragment extends TitleBarFragment<HomeActivity> {
 
@@ -77,7 +76,7 @@ public final class MineFragment extends TitleBarFragment<HomeActivity> {
 
         } else if (viewId == R.id.btn_mine_login) {
 
-            startActivity(LoginActivity.class);
+//            startActivity(LoginActivity.class);
 
         } else if (viewId == R.id.btn_mine_register) {
 
