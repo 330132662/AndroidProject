@@ -26,6 +26,8 @@ import com.hjq.demo.other.TitleBarStyle;
 import com.hjq.demo.other.ToastLogInterceptor;
 import com.hjq.demo.other.ToastStyle;
 import com.hjq.gson.factory.GsonFactory;
+import com.hjq.http.EasyConfig;
+import com.hjq.http.config.RequestServer;
 import com.hjq.toast.ToastUtils;
 import com.hjq.umeng.UmengClient;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -118,16 +120,16 @@ public final class AppApplication extends Application {
         MMKV.initialize(application);
 
         // 网络请求框架初始化
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .build();
 
-        /*EasyConfig.with(okHttpClient)
+        EasyConfig.with(okHttpClient)
                 // 是否打印日志
                 .setLogEnabled(AppConfig.isLogEnable())
                 // 设置服务器配置
-                .setServer(new RequestServer())
+//                .setServer(new RequestServer())
                 // 设置请求处理策略
-                .setHandler(new RequestHandler(application))
+//                .setHandler(new RequestHandler(application))
                 // 设置请求重试次数
                 .setRetryCount(1)
                 .setInterceptor((api, params, headers) -> {
@@ -139,7 +141,7 @@ public final class AppApplication extends Application {
                     // 添加全局请求参数
                     // params.put("6666666", "6666666");
                 })
-                .into();*/
+                .into();
 
         // 设置 Json 解析容错监听
         GsonFactory.setJsonCallback((typeToken, fieldName, jsonToken) -> {
