@@ -18,16 +18,13 @@ import com.hjq.demo.app.AppFragment;
 import com.hjq.demo.manager.ActivityManager;
 import com.hjq.demo.other.DoubleClickHelper;
 import com.hjq.demo.ui.adapter.NavigationAdapter;
-import com.hjq.demo.ui.fragment.FindFragment;
 import com.hjq.demo.ui.fragment.HomeFragment;
-import com.hjq.demo.ui.fragment.MessageFragment;
-import com.hjq.demo.ui.fragment.MineFragment;
 
 /**
- *    author : Android 轮子哥
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2018/10/18
- *    desc   : 首页界面
+ * author : Android 轮子哥
+ * github : https://github.com/getActivity/AndroidProject
+ * time   : 2018/10/18
+ * desc   : 首页界面
  */
 public final class HomeActivity extends AppActivity
         implements NavigationAdapter.OnNavigationListener {
@@ -66,13 +63,13 @@ public final class HomeActivity extends AppActivity
 
         mNavigationAdapter = new NavigationAdapter(this);
         mNavigationAdapter.addItem(new NavigationAdapter.MenuItem(getString(R.string.home_nav_index),
-                ContextCompat.getDrawable(this, R.drawable.home_home_selector)));
+                ContextCompat.getDrawable(this, R.drawable.home_found_selector)));
         mNavigationAdapter.addItem(new NavigationAdapter.MenuItem(getString(R.string.home_nav_found),
                 ContextCompat.getDrawable(this, R.drawable.home_found_selector)));
         mNavigationAdapter.addItem(new NavigationAdapter.MenuItem(getString(R.string.home_nav_message),
-                ContextCompat.getDrawable(this, R.drawable.home_message_selector)));
+                ContextCompat.getDrawable(this, R.drawable.home_found_selector)));
         mNavigationAdapter.addItem(new NavigationAdapter.MenuItem(getString(R.string.home_nav_me),
-                ContextCompat.getDrawable(this, R.drawable.home_me_selector)));
+                ContextCompat.getDrawable(this, R.drawable.home_found_selector)));
         mNavigationAdapter.setOnNavigationListener(this);
         mNavigationView.setAdapter(mNavigationAdapter);
     }
@@ -81,9 +78,9 @@ public final class HomeActivity extends AppActivity
     protected void initData() {
         mPagerAdapter = new FragmentPagerAdapter<>(this);
         mPagerAdapter.addFragment(HomeFragment.newInstance());
-        mPagerAdapter.addFragment(FindFragment.newInstance());
-        mPagerAdapter.addFragment(MessageFragment.newInstance());
-        mPagerAdapter.addFragment(MineFragment.newInstance());
+        mPagerAdapter.addFragment(HomeFragment.newInstance());
+        mPagerAdapter.addFragment(HomeFragment.newInstance());
+        mPagerAdapter.addFragment(HomeFragment.newInstance());
         mViewPager.setAdapter(mPagerAdapter);
 
         onNewIntent(getIntent());
