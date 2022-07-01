@@ -31,6 +31,8 @@ import com.hjq.http.config.RequestServer;
 import com.hjq.toast.ToastUtils;
 import com.hjq.umeng.UmengClient;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
 
@@ -69,6 +71,15 @@ public final class AppApplication extends Application {
         super.onTrimMemory(level);
         // 根据手机内存剩余情况清理图片内存缓存
         GlideApp.get(this).onTrimMemory(level);
+    }
+
+    private void init() {
+        // Bugly 异常捕捉
+//        CrashReport.initCrashReport(application, AppConfig.getBuglyId(), AppConfig.isDebug());
+        Beta.autoInit = true;
+        Beta.autoCheckUpgrade = false;
+        Beta.initDelay = 1 * 1000;
+        Bugly.init(this, AppConfig.getBuglyId(), AppConfig.isDebug());
     }
 
     /**
@@ -110,8 +121,6 @@ public final class AppApplication extends Application {
         // 友盟统计、登录、分享 SDK
         UmengClient.init(application, AppConfig.isLogEnable());
 
-        // Bugly 异常捕捉
-        CrashReport.initCrashReport(application, AppConfig.getBuglyId(), AppConfig.isDebug());
 
         // Activity 栈管理初始化
         ActivityManager.getInstance().init(application);
@@ -120,7 +129,7 @@ public final class AppApplication extends Application {
         MMKV.initialize(application);
 
         // 网络请求框架初始化
-         OkHttpClient okHttpClient = new OkHttpClient.Builder()
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .build();
 
        /* EasyConfig.with(okHttpClient)
