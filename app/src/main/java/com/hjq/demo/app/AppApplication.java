@@ -51,6 +51,7 @@ public final class AppApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        init();
         initSdk(this);
     }
 
