@@ -30,6 +30,7 @@ import com.hjq.http.EasyConfig;
 import com.hjq.http.config.RequestServer;
 import com.hjq.toast.ToastUtils;
 import com.hjq.umeng.UmengClient;
+import com.kongzue.dialogx.DialogX;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
@@ -81,6 +82,7 @@ public final class AppApplication extends Application {
         Beta.autoCheckUpgrade = false;
         Beta.initDelay = 1 * 1000;
         Bugly.init(this, AppConfig.getBuglyId(), AppConfig.isDebug());
+        DialogX.init(this);
     }
 
     /**
