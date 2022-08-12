@@ -9,7 +9,7 @@ android {
     defaultConfig {
 
         // 无痛修改包名：https://www.jianshu.com/p/17327e191d2e
-        applicationId 'com.hjq.demo'
+        applicationId 'com.juhui.gas'
 
         // 仅保留中文语种的资源
         resConfigs 'zh'
@@ -43,7 +43,7 @@ android {
 
         debug {
             // 给包名添加后缀
-            applicationIdSuffix '.debug'
+//            applicationIdSuffix '.debug'
             // 调试模式开关
             debuggable true
             jniDebuggable true
@@ -57,7 +57,7 @@ android {
 //            signingConfig signingConfigs.config
             // 添加清单占位符
             addManifestPlaceholders([
-                    'app_name': '安卓技术中台 Debug 版'
+                    'app_name': '@string/app_name'
             ])
             // 调试模式下只保留一种架构的 so 库，提升打包速度
             ndk {
@@ -70,7 +70,7 @@ android {
             applicationIdSuffix ''
             // 添加清单占位符
             addManifestPlaceholders([
-                    'app_name': '安卓技术中台 Preview 版'
+                    'app_name': '@string/app_name'
             ])
         }
 
@@ -115,11 +115,14 @@ android {
         // 只对以下包名做 AOP 处理
         include android.defaultConfig.applicationId
     }
+    buildFeatures {
+        viewBinding true
+    }
 
     applicationVariants.all { variant ->
         // apk 输出文件名配置
         variant.outputs.all { output ->
-            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.buildType.name
+            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.versionCode + '_' + variant.buildType.name
             if (variant.buildType.name == buildTypes.release.getName()) {
                 outputFileName += '_' + new Date().format('MMdd')
             }
@@ -167,6 +170,11 @@ dependencies {
     // 图片加载框架：https://github.com/bumptech/glide
     // 官方使用文档：https://github.com/Muyangmin/glide-docs-cn
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     // 沉浸式框架：https://github.com/gyf-dev/ImmersionBar

@@ -1,15 +1,18 @@
 // 通用配置
 android {
-
+    def v = 31;
     // 编译源码版本
-    compileSdkVersion 30
+    compileSdkVersion v
     defaultConfig {
         // 最低安装版本
         minSdkVersion 21
         // 目标适配版本
-        targetSdkVersion 30
+        targetSdkVersion v
         versionName '1.0'
-        versionCode 10
+        versionCode 1
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        }
     }
 
     // 支持 Java JDK 8
