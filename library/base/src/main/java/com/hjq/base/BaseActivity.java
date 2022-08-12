@@ -23,6 +23,8 @@ import com.hjq.base.action.KeyboardAction;
 import java.util.List;
 import java.util.Random;
 
+import butterknife.ButterKnife;
+
 /**
  *    author : Android 轮子哥
  *    github : https://github.com/getActivity/AndroidProject
@@ -47,6 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     protected void initActivity() {
         initLayout();
+        ButterKnife.bind(this);// 放早了会无用的。。
         initView();
         initData();
     }
