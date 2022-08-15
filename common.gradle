@@ -65,4 +65,6 @@ dependencies {
     implementation 'com.github.kongzue.DialogX:DialogX:0.0.43'
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
 }
