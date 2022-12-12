@@ -18,7 +18,6 @@ import com.hjq.base.BaseDialog;
 import com.hjq.demo.R;
 import com.hjq.demo.aop.SingleClick;
 import com.hjq.demo.app.AppAdapter;
-import com.hjq.toast.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

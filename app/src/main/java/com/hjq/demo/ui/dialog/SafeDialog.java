@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import com.hjq.base.BaseDialog;
 import com.hjq.demo.R;
 import com.hjq.demo.aop.SingleClick;
-import com.hjq.toast.ToastUtils;
 import com.hjq.widget.view.CountdownView;
 
 /**

@@ -17,7 +17,6 @@ import com.hjq.demo.aop.SingleClick;
 import com.hjq.demo.app.AppActivity;
 import com.hjq.demo.manager.InputTextManager;
 import com.hjq.demo.ui.dialog.TipsDialog;
-import com.hjq.toast.ToastUtils;
 import com.hjq.widget.view.CountdownView;
 
 /**

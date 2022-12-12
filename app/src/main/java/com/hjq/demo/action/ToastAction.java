@@ -2,8 +2,6 @@ package com.hjq.demo.action;
 
 import androidx.annotation.StringRes;
 
-import com.hjq.toast.ToastUtils;
-
 /**
  * author : Android 轮子哥
  * github : https://github.com/getActivity/AndroidProject

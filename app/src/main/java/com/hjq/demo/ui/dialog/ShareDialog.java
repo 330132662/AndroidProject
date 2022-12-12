@@ -19,7 +19,6 @@ import com.hjq.base.BaseAdapter;
 import com.hjq.base.BaseDialog;
 import com.hjq.demo.R;
 import com.hjq.demo.app.AppAdapter;
-import com.hjq.toast.ToastUtils;
 import com.hjq.umeng.Platform;
 import com.hjq.umeng.UmengClient;
 import com.hjq.umeng.UmengShare;
