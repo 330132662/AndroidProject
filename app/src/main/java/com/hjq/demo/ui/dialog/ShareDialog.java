@@ -173,7 +173,7 @@ public final class ShareDialog {
                 if (mShareAction.getShareContent().getShareType() == ShareContent.WEB_STYLE) {
                     // 复制到剪贴板
                     getSystemService(ClipboardManager.class).setPrimaryClip(ClipData.newPlainText("url", mShareAction.getShareContent().mMedia.toUrl()));
-                    ToastUtils.show(R.string.share_platform_copy_hint);
+//                    ToastUtils.show(R.string.share_platform_copy_hint);
                 }
             }
             dismiss();

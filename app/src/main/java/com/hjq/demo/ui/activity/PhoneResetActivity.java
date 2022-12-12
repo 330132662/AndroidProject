@@ -105,7 +105,7 @@ public final class PhoneResetActivity extends AppActivity
             }
 
             if (mCodeView.getText().toString().length() != getResources().getInteger(R.integer.sms_code_length)) {
-                ToastUtils.show(R.string.common_code_error_hint);
+//                ToastUtils.show(R.string.common_code_error_hint);
                 return;
             }
 

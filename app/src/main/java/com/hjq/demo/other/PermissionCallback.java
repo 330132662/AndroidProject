@@ -31,11 +31,11 @@ public abstract class PermissionCallback implements OnPermissionCallback {
         }
 
         if (permissions.size() == 1 && Permission.ACCESS_BACKGROUND_LOCATION.equals(permissions.get(0))) {
-            ToastUtils.show(R.string.common_permission_fail_4);
+//            ToastUtils.show(R.string.common_permission_fail_4);
             return;
         }
 
-        ToastUtils.show(R.string.common_permission_fail_1);
+//        ToastUtils.show(R.string.common_permission_fail_1);
     }
 
     /**

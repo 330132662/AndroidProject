@@ -42,7 +42,7 @@ public class CheckNetAspect {
                 NetworkInfo info = manager.getActiveNetworkInfo();
                 // 判断网络是否连接
                 if (info == null || !info.isConnected()) {
-                    ToastUtils.show(R.string.common_network_hint);
+//                    ToastUtils.show(R.string.common_network_hint);
                     return;
                 }
             }

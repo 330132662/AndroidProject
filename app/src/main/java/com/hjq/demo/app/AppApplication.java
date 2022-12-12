@@ -23,12 +23,7 @@ import com.hjq.demo.other.DebugLoggerTree;
 import com.hjq.demo.other.MaterialHeader;
 import com.hjq.demo.other.SmartBallPulseFooter;
 import com.hjq.demo.other.TitleBarStyle;
-import com.hjq.demo.other.ToastLogInterceptor;
-import com.hjq.demo.other.ToastStyle;
 import com.hjq.gson.factory.GsonFactory;
-import com.hjq.http.EasyConfig;
-import com.hjq.http.config.RequestServer;
-import com.hjq.toast.ToastUtils;
 import com.hjq.umeng.UmengClient;
 import com.kongzue.dialogx.DialogX;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -112,11 +107,11 @@ public final class AppApplication extends Application {
         });
 
         // 初始化吐司
-        ToastUtils.init(application, new ToastStyle());
+//        ToastUtils.init(application, new ToastStyle());
         // 设置调试模式
-        ToastUtils.setDebugMode(AppConfig.isDebug());
+//        ToastUtils.setDebugMode(AppConfig.isDebug());
         // 设置 Toast 拦截器
-        ToastUtils.setInterceptor(new ToastLogInterceptor());
+//        ToastUtils.setInterceptor(new ToastLogInterceptor());
 
         // 本地异常捕捉
         CrashHandler.register(application);
@@ -183,7 +178,7 @@ public final class AppApplication extends Application {
                         return;
                     }
 
-                    ToastUtils.show(R.string.common_network_error);
+//                    ToastUtils.show(R.string.common_network_error);
                 }
             });
         }

@@ -64,7 +64,7 @@ public final class SafeDialog {
             int viewId = view.getId();
             if (viewId == R.id.cv_safe_countdown) {
                 if (true) {
-                    ToastUtils.show(R.string.common_code_send_hint);
+//                    ToastUtils.show(R.string.common_code_send_hint);
                     mCountdownView.start();
                     setCancelable(false);
                     return;
@@ -74,7 +74,7 @@ public final class SafeDialog {
 
             } else if (viewId == R.id.tv_ui_confirm) {
                 if (mCodeView.getText().toString().length() != getResources().getInteger(R.integer.sms_code_length)) {
-                    ToastUtils.show(R.string.common_code_error_hint);
+//                    ToastUtils.show(R.string.common_code_error_hint);
                     return;
                 }
 
