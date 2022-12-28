@@ -24,7 +24,6 @@ import com.hjq.demo.other.MaterialHeader;
 import com.hjq.demo.other.SmartBallPulseFooter;
 import com.hjq.demo.other.TitleBarStyle;
 import com.hjq.gson.factory.GsonFactory;
-import com.hjq.umeng.UmengClient;
 import com.kongzue.dialogx.DialogX;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.tencent.bugly.Bugly;
@@ -32,7 +31,6 @@ import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
 
-import okhttp3.OkHttpClient;
 import timber.log.Timber;
 
 /**
@@ -117,7 +115,7 @@ public final class AppApplication extends Application {
         CrashHandler.register(application);
 
         // 友盟统计、登录、分享 SDK
-        UmengClient.init(application, AppConfig.isLogEnable());
+//        UmengClient.init(application, AppConfig.isLogEnable());
 
 
         // Activity 栈管理初始化
@@ -126,9 +124,6 @@ public final class AppApplication extends Application {
         // MMKV 初始化
         MMKV.initialize(application);
 
-        // 网络请求框架初始化
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .build();
 
        /* EasyConfig.with(okHttpClient)
                 // 是否打印日志
