@@ -1,4 +1,8 @@
 # 安卓技术中台
+#### 可选引入的库
+1、https://github.com/Tencent/Hardcoder/wiki/FAQ  需要向rom厂商申请   
+2、https://github.com/2tu/msa  匿名设备标识符(Open Anonymous Device Identifier)，是可以连接所有应用数据的标识符。在移动终端系统首次启动后立即生成，可用于广告业务，其生成参数中可包含设备唯一标识符参数。  
+3、https://github.com/bilibili/MagicaSakura app主题框架 
 
 * 项目地址：[Github](https://github.com/getActivity/AndroidProject)、[码云](https://gitee.com/getActivity/AndroidProject)
 
