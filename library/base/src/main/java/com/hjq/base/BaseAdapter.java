@@ -190,7 +190,7 @@ public abstract class BaseAdapter<VH extends BaseAdapter<?>.ViewHolder>
         }
 
         public final <V extends View> V findViewById(@IdRes int id) {
-            return getItemView().findViewById(id);
+            return (V) getItemView().findViewById(id);
         }
     }
 
