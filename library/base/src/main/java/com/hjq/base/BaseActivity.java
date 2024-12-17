@@ -31,7 +31,7 @@ import butterknife.ButterKnife;
  *    time   : 2018/10/18
  *    desc   : Activity 技术基类
  */
-public abstract class BaseActivity extends AppCompatActivity
+public abstract class BaseActivity extends Activity
         implements ActivityAction, ClickAction,
         HandlerAction, BundleAction, KeyboardAction {
 
@@ -122,7 +122,7 @@ public abstract class BaseActivity extends AppCompatActivity
      * 和 setContentView 对应的方法
      */
     public ViewGroup getContentView() {
-        return findViewById(Window.ID_ANDROID_CONTENT);
+        return (ViewGroup) findViewById(Window.ID_ANDROID_CONTENT);
     }
 
     @Override
@@ -132,7 +132,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+//        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        /*List<Fragment> fragments = getFragmentManager().getFragment("");
         for (Fragment fragment : fragments) {
             // 这个 Fragment 必须是 BaseFragment 的子类，并且处于可见状态
             if (!(fragment instanceof BaseFragment) ||
@@ -144,7 +145,7 @@ public abstract class BaseActivity extends AppCompatActivity
                 // 如果 Fragment 拦截了这个事件，那么就不交给 Activity 处理
                 return true;
             }
-        }
+        }*/
         return super.dispatchKeyEvent(event);
     }
 

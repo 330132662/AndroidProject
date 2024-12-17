@@ -16,6 +16,8 @@ import com.hjq.bar.TitleBar;
 import com.hjq.demo.R;
 import com.hjq.demo.aop.Log;
 import com.hjq.demo.http.glide.GlideApp;
+import com.hjq.demo.http.model.RequestHandler;
+import com.hjq.demo.http.model.RequestServer;
 import com.hjq.demo.manager.ActivityManager;
 import com.hjq.demo.other.AppConfig;
 import com.hjq.demo.other.CrashHandler;
@@ -23,14 +25,22 @@ import com.hjq.demo.other.DebugLoggerTree;
 import com.hjq.demo.other.MaterialHeader;
 import com.hjq.demo.other.SmartBallPulseFooter;
 import com.hjq.demo.other.TitleBarStyle;
+import com.hjq.demo.other.ToastLogInterceptor;
+import com.hjq.demo.other.ToastStyle;
 import com.hjq.gson.factory.GsonFactory;
-import com.kongzue.dialogx.DialogX;
+import com.hjq.http.EasyConfig;
+import com.hjq.http.config.IRequestApi;
+import com.hjq.http.config.IRequestInterceptor;
+import com.hjq.http.model.HttpHeaders;
+import com.hjq.http.model.HttpParams;
+import com.hjq.permissions.XXPermissions;
+import com.hjq.toast.ToastUtils;
+import com.hjq.umeng.UmengClient;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
-import com.tencent.bugly.Bugly;
-import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
 
+import okhttp3.OkHttpClient;
 import timber.log.Timber;
 
 /**
@@ -105,11 +115,11 @@ public final class AppApplication extends Application {
         });
 
         // 初始化吐司
-//        ToastUtils.init(application, new ToastStyle());
+        ToastUtils.init(application, new ToastStyle());
         // 设置调试模式
-//        ToastUtils.setDebugMode(AppConfig.isDebug());
+        ToastUtils.setDebugMode(AppConfig.isDebug());
         // 设置 Toast 拦截器
-//        ToastUtils.setInterceptor(new ToastLogInterceptor());
+        ToastUtils.setInterceptor(new ToastLogInterceptor());
 
         // 本地异常捕捉
         CrashHandler.register(application);
@@ -124,12 +134,15 @@ public final class AppApplication extends Application {
         // MMKV 初始化
         MMKV.initialize(application);
 
+        // 网络请求框架初始化
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .build();
 
-       /* EasyConfig.with(okHttpClient)
+        EasyConfig.with(okHttpClient)
                 // 是否打印日志
                 .setLogEnabled(AppConfig.isLogEnable())
                 // 设置服务器配置
-                .setServer(new RequestServer("baidu.com"))
+                .setServer(new RequestServer("http://www.baidu.com"))
                 // 设置请求处理策略
                 .setHandler(new RequestHandler(application))
                 // 设置请求重试次数
@@ -143,7 +156,7 @@ public final class AppApplication extends Application {
                     // 添加全局请求参数
                     // params.put("6666666", "6666666");
                 })
-                .into();*/
+                .into();
 
         // 设置 Json 解析容错监听
         GsonFactory.setJsonCallback((typeToken, fieldName, jsonToken) -> {
@@ -173,7 +186,7 @@ public final class AppApplication extends Application {
                         return;
                     }
 
-//                    ToastUtils.show(R.string.common_network_error);
+                    ToastUtils.show(R.string.common_network_error);
                 }
             });
         }
